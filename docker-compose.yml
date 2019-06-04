@@ -13,7 +13,7 @@ services:
         networks:
            - rakuten
         ports:
-           - 80:80
+           - 8080:80
            - 443:443
 
      flask:
@@ -32,8 +32,8 @@ services:
               aliases:
                - flask-app
 
-        ports:
-           - 8080:5000
+                 #        ports:
+                 #- 8080:5000
 
 
 networks:
