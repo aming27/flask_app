@@ -29,7 +29,7 @@ docker-compose file
 
 We have two containers:
 
-Markuo: * 1.) nginx
+Markup: * 1.) nginx
   	* 2.) flask
 
 I assume that you have docker compose installed.
