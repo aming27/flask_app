@@ -40,6 +40,11 @@ Dockerfile:
 This proccess will install all the dependencies of flask. 
 After this step I've created a small code that returns a json ouput like this :
 
+```
+curl -k -L  "localhost:8080/hello"
+{"hello":"world"}
+
+```
 Once I've checked that the code is right I've created a docker-compose in order to create the cluster. Nginx service depends on flask service so when you start the cluster docker-compose starts the flask container for us and the nginx.
 
 I've create a custom nginx configuration file and I've added this file into a volume like this:
