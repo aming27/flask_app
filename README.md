@@ -29,10 +29,10 @@ docker-compose file
 
 We have two containers:
 
-  1.) nginx
-  2.) flask
+Markuo: * 1.) nginx
+  	* 2.) flask
 
-I assume that you have docker compose installed, if not going throught the instructions here.
+I assume that you have docker compose installed.
 
 For creating the flask container I've created an easy Dockerfile from.
 
@@ -53,6 +53,27 @@ I've create a custom nginx configuration file and I've added this file into a vo
 
     - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
+In order to pass HTTPS requests I've created a self-signed certificate whith this command:
+
+```
+openssl req -x509 -newkey rsa:4096 -keyout localhost.pem -out localhost.pem -days 365
+```
+After creating the self-signed certificate you should to do some changes in nginx.conf file.
+
+```
+server {
+    listen 443;
+    ssl on;
+    ssl_certificate /etc/nginx/conf.d/localhost.crt;
+    ssl_certificate_key /etc/nginx/conf.d/localhost.key;
+    server_name localhost;
+    location / {
+        proxy_pass http://flask-app:5000/;
+        proxy_set_header Host "localhost";
+    }
+
+```
+This is a way for self-signed certificate but this kind of certificates are not validated from a CA. Feel you free to configure Let's Encrypt for this purpose.
 
 ## Authors
 
