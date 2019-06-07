@@ -25,15 +25,8 @@ docker-compose up -d
 
 ### How flask app works?
 
-docker-compose file
-
-We have two containers:
-
-Markup: * 1.) nginx
-  	* 2.) flask
-
 I assume that you have docker compose installed.
-
+We have two containers: nginx and flask
 For creating the flask container I've created an easy Dockerfile from.
 
 Dockerfile:
